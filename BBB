@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>افتح في متصفح خارجي</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        button {
+            padding: 10px 20px;
+            border: 2px solid green;
+            background-color: white;
+            color: black;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+    <button onclick="openInExternalBrowser()">Click here to be transferred to the store</button>
+
+    <script>
+        function openInExternalBrowser() {
+            var url = "https://1games4uu.blogspot.com/?m=1"; // رابط متجرك
+            if (navigator.userAgent.match(/Android/i)) {
+                // لأجهزة الأندرويد
+                window.location.href = "intent://" + url + "#Intent;scheme=https;package=com.android.chrome;end";
+            } else if (navigator.userAgent.match(/iPhone|iPad|iPod/i)) {
+                // لأجهزة iOS
+                window.location.href = "googlechrome://" + url.replace("https://", "");
+            } else {
+                // لأجهزة الكمبيوتر أو أي جهاز آخر
+                window.open(url, "_blank");
+            }
+        }
+    </script>
+</body>
+</html>
